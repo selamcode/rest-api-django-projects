@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.so
+
+# Environment
+env/
+venv/
+ENV/
+.venv/
+*.env
+*.env.*
+
+# VS Code / IDEs
+.vscode/
+.idea/
+*.swp
+
+# Django specific
+db.sqlite3
+*.log
+*.pot
+*.pyc
+local_settings.py
+media/
+staticfiles/
+
+# Migrations (optional, only ignore if you don't want to track them)
+# **NOTE**: It's usually better to include migrations in version control.
+# myapp/migrations/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage / Testing
+.coverage
+htmlcov/
+coverage.xml
+*.cover
+
+# Pytest / Test output
+.cache/
+.pytest_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Others
+*.bak
+*.orig
