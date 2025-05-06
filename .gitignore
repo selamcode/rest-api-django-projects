@@ -54,3 +54,6 @@ dist/
 # Others
 *.bak
 *.orig
+# Secrets
+secrets.json
+settings_local.py
