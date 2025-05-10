@@ -93,7 +93,7 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-'''
+
 # local machine setup
 DATABASES = {
     "default": {
@@ -103,10 +103,14 @@ DATABASES = {
 }
 
 
+
+
 '''
 DATABASES = {
     'default': env.db('DATABASE_URL', default='postgres://localhost/dbname')  # Uses DATABASE_URL from .env
 }
+'''
+
 
 
 
