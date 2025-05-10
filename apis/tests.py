@@ -14,6 +14,7 @@ class APITest(APITestCase):
             subtitle="Build web APIs with Python and Django",
             author="William S. Vincent",
             isbn="9781735467221",
+         
         )
     def test_api_listview(self):
         response = self.client.get(reverse("book_list"))

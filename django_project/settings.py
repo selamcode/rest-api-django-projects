@@ -14,6 +14,11 @@ from pathlib import Path
 import os # when delpoying it's need
 import dj_database_url # for deployment purpose
 from dotenv import load_dotenv
+import environ
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()  # This reads the .env file
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
