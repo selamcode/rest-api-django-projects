@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os # when delpoying it's need
+import dj_database_url # for deployment purpose
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,13 +22,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+# Load environment variables from a .env file if it exists (for local development)
+load_dotenv()
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-91o=^vb!f8-=$uvf(=o45gk$55_fow8l@g@b6_jj!2dt7#vm83"
+# Retrieve the SECRET_KEY from the environment (or .env file in development)
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# If SECRET_KEY is not found, raise an error
+if not SECRET_KEY:
+    raise ValueError("No SECRET_KEY set for Django. Please define one.")
 
-ALLOWED_HOSTS = []
+# DEBUG setting - Default to False for production, can be set to True in .env for development
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+ALLOWED_HOSTS = ['*'] # for deployment use the domain from the host provider
 
 
 # Application definition
@@ -76,12 +87,23 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+'''
+# local machine setup
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+
+'''
+DATABASES = {
+    'default': env.db('DATABASE_URL', default='postgres://localhost/dbname')  # Uses DATABASE_URL from .env
+}
+
+
 
 
 # Password validation
@@ -119,6 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
