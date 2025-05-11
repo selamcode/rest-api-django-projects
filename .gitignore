@@ -67,9 +67,10 @@ data.json
 db.json
 
 # SQLite database files
-*.sqlite3
-*.db
+db.sqlite3
+db.sqlite3.backup
 
 # PostgreSQL dump or data files (if any)
 *.sql
+
 
