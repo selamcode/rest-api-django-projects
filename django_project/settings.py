@@ -95,14 +95,14 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 
 
 # local machine setup
-'''
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-'''
+
 
 
 
