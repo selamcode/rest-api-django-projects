@@ -3,7 +3,7 @@ services:
     name: book
     env: python
     buildCommand: |
-      echo $DATA_JSON | base64 --decode > data.json
+      pip install -r requirements.txt
       python manage.py migrate
-      python manage.py loaddata data.json
+      python manage.py loaddata $DATA_JSON
     startCommand: gunicorn django_project.wsgi:application
