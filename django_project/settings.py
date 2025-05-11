@@ -20,7 +20,6 @@ import environ
 env = environ.Env()
 environ.Env.read_env()  # This reads the .env file
 
-DATA_JSON = env('DATA_JSON') 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

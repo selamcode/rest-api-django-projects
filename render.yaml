@@ -7,3 +7,6 @@ services:
       python manage.py migrate
       python manage.py loaddata $DATA_JSON
     startCommand: gunicorn django_project.wsgi:application
+    envVars:
+      - key: DATA_JSON
+        value: /etc/secrets/DATA_JSON
