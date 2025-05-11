@@ -5,7 +5,7 @@ services:
     buildCommand: |
       pip install -r requirements.txt
       python manage.py migrate
-      python manage.py loaddata $DATA_JSON
+      python manage.py loaddata /etc/secrets/DATA_JSON
     startCommand: gunicorn django_project.wsgi:application
     envVars:
       - key: DATA_JSON
