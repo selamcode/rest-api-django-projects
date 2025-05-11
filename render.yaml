@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: book
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py migrate
+      python manage.py loaddata $DATA_JSON
+    startCommand: gunicorn rest-api-django-projects.wsgi:application

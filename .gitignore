@@ -61,3 +61,15 @@ dist/
 secrets.json     # Keep secret files out of Git
 settings_local.py # Local settings (e.g., containing secret keys)
 .env             # Environment variable file (DO NOT track sensitive data)
+
+# Data export files
+data.json
+db.json
+
+# SQLite database files
+*.sqlite3
+*.db
+
+# PostgreSQL dump or data files (if any)
+*.sql
+

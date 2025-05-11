@@ -95,7 +95,7 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 
 
 # local machine setup
-''''
+'''
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -107,10 +107,27 @@ DATABASES = {
 
 
 
+# postgres for deployment
+
+
+
+
+# local for postgress
+
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://localhost/dbname')  # Uses DATABASE_URL from .env
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
 }
+
+
+
 
 
 
