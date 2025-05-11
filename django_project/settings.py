@@ -114,7 +114,7 @@ DATABASES = {
 
 # local for postgress
 
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -125,6 +125,8 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
+
+'''
 
 
 
