@@ -3,6 +3,10 @@ services:
     name: book
     env: python
     buildCommand: |
+      echo "Checking if Django is installed..."
+      pip freeze | grep Django || echo "Django not found"
+      echo "Activating virtual environment..."
+      source /opt/render/project/src/venv/bin/activate
       pip install -r requirements.txt
       echo $DATA_JSON | base64 --decode > data.json
       python manage.py migrate
