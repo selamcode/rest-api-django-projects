@@ -41,7 +41,10 @@ if not SECRET_KEY:
 # DEBUG setting - Default to False for production, can be set to True in .env for development
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
+
 ALLOWED_HOSTS = ['*'] # for deployment use the domain from the host provider
+
+
 
 
 # Application definition
@@ -56,7 +59,14 @@ INSTALLED_APPS = [
     'rest_framework',
     "books",
     "apis",
+    "todo",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+    "rest_framework.permissions.AllowAny",
+    ],
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

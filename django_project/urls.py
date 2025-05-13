@@ -21,5 +21,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("books.urls")),
     path("api/", include("apis.urls")),
+    path("todo/", include("todo.urls")),
     path('api-auth/', include('rest_framework.urls')),
 ]
