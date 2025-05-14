@@ -42,7 +42,7 @@ if not SECRET_KEY:
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 
-ALLOWED_HOSTS = ['*'] # for deployment use the domain from the host provider
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".onrender.com"] # for deployment use the domain from the host provider
 
 
 
@@ -56,7 +56,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'rest_framework',
+    "whitenoise.runserver_nostatic",
+    "rest_framework",
+    "corsheaders",
     "books",
     "apis",
     "todo",
@@ -76,7 +78,15 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
+
+CORS_ALLOWED_ORIGINS = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",]
 
 ROOT_URLCONF = "django_project.urls"
 
@@ -181,6 +191,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"] 
+STATIC_ROOT = BASE_DIR / "staticfiles" 
+STATICFILES_STORAGE = "whienoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
