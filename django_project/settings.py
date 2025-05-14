@@ -86,7 +86,7 @@ CORS_ALLOWED_ORIGINS = (
     "http://localhost:3000",
     "http://localhost:8000",
 )
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://rest-api-django-projects.onrender.com/",]
 
 ROOT_URLCONF = "django_project.urls"
 
