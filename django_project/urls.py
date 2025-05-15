@@ -23,4 +23,6 @@ urlpatterns = [
     path("api/", include("apis.urls")),
     path("todo/", include("todo.urls")),
     path('api-auth/', include('rest_framework.urls')),
+    path("api/v1/", include("posts.urls")),
+    
 ]
