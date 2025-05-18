@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "whitenoise.runserver_nostatic",
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
     "books",
     "apis",
@@ -69,6 +70,10 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
     "rest_framework.permissions.IsAuthenticated",
+    ],
+   "DEFAULT_AUTHENTICATION_CLASSES": [
+    "rest_framework.authentication.SessionAuthentication", # for session authentication, so we can use DRF as a developer 
+    "rest_framework.authentication.TokenAuthentication", # for token authentication 
     ],
 }
 
