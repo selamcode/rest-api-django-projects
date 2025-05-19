@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os # when delpoying it's need
-import dj_database_url # for deployment purpose
+#import dj_database_url # for deployment purpose
 from dotenv import load_dotenv
 import environ
 
@@ -42,6 +42,7 @@ if not SECRET_KEY:
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 
+
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".onrender.com"] # for deployment use the domain from the host provider
 
 
@@ -57,13 +58,20 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "whitenoise.runserver_nostatic",
+    # 3rd-party apps
     "rest_framework",
     "rest_framework.authtoken",
+    "allauth", 
+    "allauth.account", 
+    "allauth.socialaccount", 
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
     "corsheaders",
+    #local
     "books",
     "apis",
     "todo",
-    "accounts.apps.AccountsConfig",
+    "accounts",
     "posts",
 ]
 
@@ -87,6 +95,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 CORS_ALLOWED_ORIGINS = (
@@ -108,6 +117,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request", 
             ],
         },
     },
@@ -208,3 +218,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "accounts.CustomUser"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" 
+SITE_ID = 1 
