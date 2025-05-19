@@ -70,7 +70,8 @@ db.json
 
 db.sqlite3.backup
 
-# PostgreSQL dump or data files (if any)
+# backed up data
+backup.json
 
 
 
