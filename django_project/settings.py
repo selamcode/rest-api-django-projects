@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "whitenoise.runserver_nostatic",
+    
     # 3rd-party apps
     "rest_framework",
     "rest_framework.authtoken",
@@ -67,6 +68,8 @@ INSTALLED_APPS = [
     "dj_rest_auth",
     "dj_rest_auth.registration",
     "corsheaders",
+    "drf_spectacular",
+    
     #local
     "books",
     "apis",
@@ -83,6 +86,7 @@ REST_FRAMEWORK = {
     "rest_framework.authentication.SessionAuthentication", # for session authentication, so we can use DRF as a developer 
     "rest_framework.authentication.TokenAuthentication", # for token authentication 
     ],
+   "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 MIDDLEWARE = [
@@ -190,6 +194,13 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Blog API Project",
+    "DESCRIPTION": "A sample blog to learn about DRF",
+    "VERSION": "1.0.0",
+}
+
 
 
 # Internationalization
